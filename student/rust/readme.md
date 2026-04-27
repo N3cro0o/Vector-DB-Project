@@ -3,7 +3,7 @@
 Przykładowy program należy wpierw skompilować poprzez wpisanie komendy `cargo run` albo poprzez `cargo build` i uruchomienie pliku wykonywalnego w katalogu `target/debug`.
 
 ### 4.1. Lokalna instalacja Chroma
-Do poprawnego uruchomienia projektu wykorzystującego lokalną instancję ChromaDB należy ją ręcznie zainstalować. Aby tego dokonać należy wykorzystać narzędzie pip, zainstalować kontener zawierający bazę danych albo ręcznie pobrać wykorzystując link. [Wszystkie opcje opisano w dokumentacji](https://cookbook.chromadb.dev/core/install/#__tabbed_2_2)
+Do poprawnego uruchomienia projektu wykorzystującego lokalną instancję ChromaDB należy ją ręcznie zainstalować. Aby tego dokonać należy wykorzystać narzędzie pip, zainstalować kontener zawierający bazę danych albo ręcznie pobrać wykorzystując link. [Wszystkie opcje opisano w dokumentacji](https://cookbook.chromadb.dev/core/install/#__tabbed_2_2) oraz [w dokumentacji pakietu chroma](https://docs.rs/chroma/latest/chroma/index.html).
 
 
 W tym katalogu przygotowano przykładowy kod obsługujący bazę danych ChromaDB. Do poprawnego działania programu należy przygotować lokalną instancję bazy danych poprzez wpisanie komendy: 
