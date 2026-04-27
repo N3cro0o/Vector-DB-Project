@@ -1,17 +1,5 @@
-## Laboratorium - Python
-
-### Cel ćwiczenia:
-
-Celem ćwiczenia jest zapoznanie się z podstawami pracy z wektorową bazą danych Chroma. Na zajęciach nauczysz się:
-
-* Jak zainstalować Chrome lokalnie na komputerze
-* Jak utworzyć klienta
-* Jak utworzyć kolekcje 
-* Jak dodać dokument 
-* Jak wyszukiwać dane 
-* Jak usunąć rekordy czy kolekcje
-
-#### 4.1. Lokalna instalacja Chroma
+## Laboratorium 1 - Python
+### 4.1. Lokalna instalacja Chroma
 
 W celu korzystania z Chroma użytkownik musi mieć zainstalowany Python 3.9 lub wersję nowszą na swoim komputerze.
 W celu sprawdzenia wersji Pythona w PyCharm użytkownik musi wykonać następujące kroki w programie:

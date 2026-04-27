@@ -30,7 +30,7 @@ async fn main() {
         }
     }
     let results = match collection
-        .query(vec![vec![0.1, 0.2, 0.3]], Some(2), None, None, None)
+        .query(vec![vec![0.2, 0.2, 0.2]], Some(2), None, None, None)
         .await {
         Ok(r) => r,
         Err(err) => {
