@@ -1,4 +1,5 @@
 use chroma::ChromaHttpClient as HttpClient;
+use chroma::types;
 use std::error::Error;
 
 #[tokio::main]
@@ -39,6 +40,25 @@ async fn main() {
         }
     };
     println!("Result: {:#?}", results);
+
+    let where_struct = types::Where::Document(
+        types::DocumentExpression
+        {
+            operator: types::DocumentOperator::Contains,
+            pattern: "orange".to_string(),
+        }
+    );
+    let results = match collection
+        .query(vec![vec![0.2, 0.2, 0.2]], Some(2), Some(where_struct), None, None)
+        .await {
+        Ok(r) => r,
+        Err(err) => {
+            eprintln!("Error while getting results from collection: {}", err);
+            return;
+        }
+    };
+    println!("Result: {:#?}", results);   
+
     if let Err(err) = client.delete_collection("my_collection").await {
         eprintln!("Error while deleting collection: {}", err);
     }
