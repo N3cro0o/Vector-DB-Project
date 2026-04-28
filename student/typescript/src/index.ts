@@ -35,22 +35,19 @@ async function removeDocs(collection: Collection, ids: string[]) {
     });
 }
 
-/**
- * GŁÓWNY PROGRAM (Przykład użycia "od strzała")
+/*
+Przykład użycia
  */
 async function main() {
     try {
         console.log("--- Rozpoczynam pracę z ChromaDB ---");
 
-        // Inicjalizacja
         const client = await initClient();
 
-        // Tworzenie kolekcji
         const collectionName = "moja_kolekcja_testowa";
         const collection = await getCollection(client, collectionName);
         console.log(`Połączono z kolekcją: ${collectionName}`);
 
-        // Dodawanie danych
         console.log("Dodawanie dokumentów...");
         await addDocs(
             collection,
@@ -58,12 +55,10 @@ async function main() {
             ["To jest dokument o owocach cytrusowych", "To jest dokument o szybkich samochodach"]
         );
 
-        // Wyszukiwanie
         console.log("Wyszukiwanie zapytania: 'Coś do jedzenia'...");
         const results = await searchDocs(collection, "Coś do jedzenia", 1);
         console.log("Wynik wyszukiwania:", results.documents);
 
-        // Usuwanie
         console.log("Usuwanie dokumentu id1...");
         await removeDocs(collection, ["id1"]);
 
@@ -74,5 +69,4 @@ async function main() {
     }
 }
 
-// Uruchomienie programu
 main();
