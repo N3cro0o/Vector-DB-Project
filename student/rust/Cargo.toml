@@ -6,3 +6,4 @@ edition = "2024"
 [dependencies]
 chroma = "0.14.0"
 tokio = "1.52.1"
+fastembed = "5.13.4"
