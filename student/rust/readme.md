@@ -22,7 +22,7 @@ Można to porównać do połączenia z klasyczną bazą danych, np. PostgreSQL l
 Bez utworzenia klienta aplikacja nie ma możliwości wykonywania żadnych operacji na danych. W środowisku rust strukturę chroma::ChromaHttpClient wygląda następująco:
 
 ```rust
-let client = HttpClient::new(Default::default());
+let client = ChromaHttpClient::new(Default::default());
 ```
 
 #### 3. Utworzenie kolekcji
@@ -43,16 +43,19 @@ Użytkownik musi znać i wykorzystywać parametry takie jak documents czy ids. P
 
 Parametr ids zawiera unikalny identyfikator dla każdego utworzonego dokumentu. Działa on w sposób podobny do klucza głównego w relacyjnych bazach danych. Poniżej przedstawiono przykład dodania dokumentu.
 
-```python
-collection.add(
-    vec!["id1".to_string(), "id2".to_string()],
-    embeddings,
-    Some(vec![
-        Some("This is a document about pineapple".to_string()),
-        Some("This is a document about oranges".to_string()),
-    ]),
-    None,
-    None);
+Aplikacja serwera ChromaDB posiada wbudowany model `all-MiniLM-L6-v2`, natomiast bezpośredni dostęp do niego jest niemożliwy. Dlatego należy wykorzystać zewnętrzny model do zamiany teksu na wiązania wektorowe. W przeciwnym przypadku należy generować wiązania ręcznie. Do stworzenia lokalnej instancji modelu można wykorzystać pakiet [fastembed](https://docs.rs/fastembed/5.13.4/fastembed/).
+
+```rust
+let embeddings = match model.embed(texts, None);
+collection.add(vec!["id1".to_string(), "id2".to_string()],
+        embeddings,
+        Some(vec![
+                Some("This is a document about pineapple".to_string()),
+                Some("This is a document about oranges".to_string()),
+            ]),
+        None,
+        None,
+    )
 ```
 
 #### 5. Wyszukiwanie dokumentów w kolekcji
