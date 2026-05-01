@@ -8,7 +8,12 @@ W celu sprawdzenia wersji Pythona w PyCharm użytkownik musi wykonać następuj�
 
 Następnie w terminalu przy pomocy pip (“Pip Installs Packages”), czyli domyślnego systemu zarządzania pakietami używanego w języku Python instalujemy bibliotekę chromadb.
 
-`pip install chromadb`
+```python
+pip install chromadb
+```
+
+Domyślnie serwer Chroma działa pod portem 8000:
+`http://localhost:8000`
 
 #### 4.2. Utworzenie klienta
 
