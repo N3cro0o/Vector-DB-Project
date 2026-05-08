@@ -4,14 +4,14 @@
 
 Aby rozpocząć dalszą pracę, musimy zrozumieć co dokładnie wykonywaliśmy na pierwszych laboratoriach. Korzystaliśmy wówczas z biblioteki chromadb, która posiada wbudowany mechanizm generowania embeddingów. Oznacza to, że nie musieliśmy ręcznie przekształcać tekstu na wektory – Chroma automatycznie wykonywała ten proces „w tle” przy dodawaniu i wyszukiwaniu dokumentów.
 
-Takie podejście jest wygodne na etapie wprowadzenia, jednak ogranicza kontrolę nad procesem reprezentacji tekstu. Nie mamy wpływu na wybór modelu, na jego jakość oraz na sposób kodowania znaczenia tekstu.
+Takie podejście jest wygodne na etapie wprowadzenia, jednak ogranicza kontrolę nad procesem reprezentacji tekstu. Nie mamy wpływu na wybór modelu, jego jakość oraz sposób kodowania znaczenia tekstu.
 
-W bardziej zaawansowanych zastosowaniach, takich jak systemy wyszukiwania semantycznego czy Retrieval-Augmented Generation (RAG), często wymagane jest użycie własnych modeli embeddingowych. Pozwala to na lepsze dopasowanie modelu do konkretnej dziedziny danych oraz poprawę jakości wyszukiwania.
+W bardziej zaawansowanych zastosowaniach, takich jak systemy wyszukiwania semantycznego czy Retrieval-Augmented Generation (RAG), często wykorzystuje się zewnętrzne biblioteki do generowania embeddingów. Pozwala to na lepsze dopasowanie modelu do konkretnej dziedziny danych oraz poprawę jakości wyszukiwania.
 
 W tym celu wykorzystamy bibliotekę:
 
 ```python
-pip install sentence-transformers
+pip install fastembed
 ```
 
 ### 5.2. Embedding, wyszukiwanie semantyczne, jak następuje zamiana tekstu na wektor?
@@ -61,12 +61,10 @@ where={"continent": "Europe"}
 * Utwórz kolekcję countries w bazie ChromaDB.
 * Dodaj minimum 10 dokumentów opisujących państwa (każdy dokument powinien zawierać opis tekstowy kraju).
 * Do każdego dokumentu przypisz metadane: kontynent, stolica, waluta.
-* Wygeneruj embeddingi dla wszystkich dokumentów przy użyciu biblioteki sentence-transformers.
+* Wygeneruj embeddingi dla wszystkich dokumentów przy użyciu biblioteki fastembed.
 * Zapisz dokumenty wraz z embeddingami i metadanymi w kolekcji.
-* Wykonaj wyszukiwanie semantyczne na podstawie zapytania tekstowego i znajdź 2 najbardziej podobne do siebie państwa.
+* Wykonaj wyszukiwanie semantyczne na podstawie zapytania tekstowego i znajdź 2 najbardziej podobne znaczeniowo państwa względem zapytania.
 * Zastosuj filtrowanie wyników wyszukiwania przy użyciu metadanych np. według kontynentu lub stolicy.
-* Porównaj działanie wyszukiwania semantycznego z filtrowaniem po metadanych. Opowiedz prowadzącemu jaką widzisz różnice.
+* Porównaj działanie wyszukiwania semantycznego z filtrowaniem po metadanych. Opowiedz prowadzącemu jaką widzisz różnicę.
 
-W zadaniu należy wykonać wyszukiwanie semantyczne z wykorzystaniem parametru query_embeddings. Oznacza to, że zapytanie tekstowe musi zostać wcześniej zamienione na embedding (wektor liczbowy) przy użyciu modelu sentence-transformers, a następnie przekazane do funkcji query().
-
-### Do generowania embeddingów proszę wykorzystać model all-MiniLM-L6-v2 z biblioteki sentence-transformers ###
+W zadaniu należy wykonać wyszukiwanie semantyczne z wykorzystaniem parametru query_embeddings. Oznacza to, że zapytanie tekstowe musi zostać wcześniej zamienione na embedding (wektor liczbowy) przy użyciu biblioteki fastembed i klasy TextEmbedding(), a następnie przekazane do funkcji query().

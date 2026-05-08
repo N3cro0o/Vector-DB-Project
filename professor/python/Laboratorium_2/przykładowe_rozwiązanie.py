@@ -1,8 +1,7 @@
 import chromadb
-from sentence_transformers import SentenceTransformer
+from fastembed import TextEmbedding
 
-
-model = SentenceTransformer("all-MiniLM-L6-v2")
+model = TextEmbedding()
 
 client = chromadb.Client()
 
@@ -41,7 +40,7 @@ metadatas = [
 ids = [str(i) for i in range(len(documents))]
 
 # Zamiana tekstów na wektory liczbowe
-embeddings = model.encode(documents).tolist()
+embeddings = [embedding.tolist() for embedding in model.embed(documents)]
 
 # Zapis dokumentów,metadanych,embeddingów do bazy
 collection.add(
@@ -53,7 +52,11 @@ collection.add(
 
 # Wyszukiwanie semantyczne państwa o podobnym opisie
 query = "country with strong economy in Europe"
-query_embedding = model.encode([query]).tolist()
+
+query_embedding = [
+    embedding.tolist()
+    for embedding in model.embed([query])
+]
 
 results = collection.query(
     query_embeddings=query_embedding,
@@ -88,7 +91,11 @@ for doc in results["documents"][0]:
 
 # Bardziej ogólne zapytanie o duże kraje w Azji
 query = "big country with many people in Asia"
-query_embedding = model.encode([query]).tolist()
+
+query_embedding = [
+    embedding.tolist()
+    for embedding in model.embed([query])
+]
 
 results = collection.query(
     query_embeddings=query_embedding,
