@@ -11,7 +11,7 @@ Celem ćwiczenia jest zapoznanie się z podstawami pracy z wektorową bazą dany
 * Jak wyszukiwać dane 
 * Jak usunąć rekordy czy kolekcje
 
-Dokładny opis jak wykonać pierwsze laboratorium znajduje się w [katalogu labs_extended/](labs_extended/LAB1.md). 
+Dokładny opis jak wykonać pierwsze laboratorium znajduje się w [katalogu labs_extended/](student/lab_extended/LAB1.md). 
 ## Laboratorium 2
 
 ### Cel ćwiczenia:
