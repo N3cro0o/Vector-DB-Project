@@ -2,8 +2,10 @@ use chroma::ChromaHttpClient as HttpClient;
 use fastembed::{TextEmbedding, InitOptions, EmbeddingModel};
 
 mod lab1;
+mod lab2;
 
 static USE_LOCAL_MODEL: bool = true;
+const LAB_NUM: u32 = 2;
 
 #[tokio::main]
 async fn main() {
@@ -22,19 +24,34 @@ async fn main() {
             return;
         }
     };
-    let result_lab1;
-    if !USE_LOCAL_MODEL {
-        result_lab1 = lab1::basic_db_handling(&client, &collection, Some(&mut model)).await;        
-    }
-    else {
-        result_lab1 = lab1::basic_db_handling(&client, &collection, None).await;        
-    }
-    if let Err(err) = result_lab1 {
-        eprintln!("{}", err);
-        return;
-    }
-    if let Err(err) = client.delete_collection("my_collection").await {
-        eprintln!("Error while deleting collection: {}", err);
+    match LAB_NUM {
+        1 => {
+            let result_lab1;
+            if !USE_LOCAL_MODEL {
+                result_lab1 = lab1::basic_db_handling(&client, &collection, Some(&mut model)).await;        
+            }
+            else {
+                result_lab1 = lab1::basic_db_handling(&client, &collection, None).await;        
+            }
+            if let Err(err) = result_lab1 {
+                eprintln!("{}", err);
+                return;
+            }
+            if let Err(err) = client.delete_collection("my_collection").await {
+                eprintln!("Error while deleting collection: {}", err);
+            }
+        }
+
+        2 => {
+            if let Err(err) = lab2:: embedding_and_metadata(&client, Some(&mut model)).await{
+                eprintln!("{}", err);
+                return;
+            }
+            if let Err(err) = client.delete_collection("countries").await {
+                eprintln!("Error while deleting collection: {}", err);
+            }
+        }
+
+        _ => { eprintln!("Invalid lab number"); } 
     }
 }
-
