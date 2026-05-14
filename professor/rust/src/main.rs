@@ -5,7 +5,7 @@ mod lab1;
 mod lab2;
 
 static USE_LOCAL_MODEL: bool = true;
-const LAB_NUM: u32 = 2;
+const LAB_NUM: u32 = 1;
 
 #[tokio::main]
 async fn main() {
@@ -27,7 +27,7 @@ async fn main() {
     match LAB_NUM {
         1 => {
             let result_lab1;
-            if !USE_LOCAL_MODEL {
+            if USE_LOCAL_MODEL {
                 result_lab1 = lab1::basic_db_handling(&client, &collection, Some(&mut model)).await;        
             }
             else {

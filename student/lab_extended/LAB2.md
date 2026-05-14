@@ -15,13 +15,20 @@ W zależności od wybranego środowiska programistycznego, należy zintegrować 
 ```python
 pip install fastembed
 ```
+
+##### cargo
+
+```rust
+cargo add fastembed
+```
+
+Alternatywnie można dodać linię `fastembed = "5.13.4"` w pliku Cargo.toml.
+
 ##### npm
 
 ```typescipt
 npm install fastembed
 ```
-
-
 
 ### 2. Osadzanie wektorowe i wyszukiwanie semantyczne
 
@@ -82,11 +89,11 @@ collection.add(
 ##### Rust
 
 ```rust
-let mut metadata_vec: Vec<Option<HashMap<String, MV>>> = vec![];
+let mut metadata_vec: Vec<Option<HashMap<String, MetadataValue>>> = vec![];
 metadata_vec.push(Some(HashMap::from([
-    ("continent".into(), MV::Str("Europe".into())),
-    ("capital".into(), MV::Str("Berlin".into())),
-    ("year".into(), MV::Int(2024))
+    ("continent".into(), MetadataValue::Str("Europe".into())),
+    ("capital".into(), MetadataValue::Str("Berlin".into())),
+    ("year".into(), MetadataValue::Int(2024))
 ])));
 
 match collection.add(

@@ -27,13 +27,14 @@ pub async fn basic_db_handling(_client: &HttpClient, collection: &ChromaCollecti
                 return Err(format!("Error while inserting to collection: {}", err));
             }
         }
+        println!("I fancy pineapples");
         let query_text = match model.embed(vec!["I fancy pineapples".to_string()], None) {
             Ok(em) => em,
             Err(err) => {
                 return Err(format!("Error while generating embeddings: {}", err));
             }
         };
-
+        println!("{:#?}\n\n--------------------------------------------", query_text);
         let results = match collection
             .query(query_text, Some(2), None, None, None)
             .await {
