@@ -22,6 +22,7 @@ documents = [
     "China is one of the largest countries in the world by population.",
     "Brazil is the largest country in South America with the Amazon rainforest."
 ]
+
 # Metadane - dodatkowe informacje o dokumentach
 metadatas = [
     {"continent": "Europe", "capital": "Warsaw", "currency": "PLN"},
@@ -68,8 +69,15 @@ for doc in results["documents"][0]:
     print("-", doc)
 
 # Semantyczne dopasowanie i filtr (bierzemy pod uwagę tylko państwa europejskie)
+query = "country"
+
+query_embedding = [
+    embedding.tolist()
+    for embedding in model.embed([query])
+]
+
 results = collection.query(
-    query_texts=["country"],
+    query_embeddings=query_embedding,
     n_results=5,
     where={"continent": "Europe"}
 )
@@ -79,8 +87,15 @@ for doc in results["documents"][0]:
     print("-", doc)
 
 # Zwraca tylko dokument, gdzie stolica to Tokyo
+query = "capital cities"
+
+query_embedding = [
+    embedding.tolist()
+    for embedding in model.embed([query])
+]
+
 results = collection.query(
-    query_texts=["capital cities"],
+    query_embeddings=query_embedding,
     n_results=5,
     where={"capital": "Tokyo"}
 )

@@ -69,7 +69,8 @@ print(results)
 #### 4.6. Usuwanie danych w Chroma
 Podczas pracy z bazą danych często zachodzi potrzeba usunięcia nieaktualnych lub błędnie dodanych danych. W środowisku Chroma możliwe jest usuwanie danych na dwóch poziomach:
 * pojedyńczych rekordów,
-* całej kolekcji
+* całej kolekcji,
+
 Usunięcie pojedyńczego rekordu to usunięcie dokumentu o konkretnym identyfikatorze:
 
 ```python
