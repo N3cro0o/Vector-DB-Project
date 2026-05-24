@@ -3,9 +3,11 @@ use fastembed::{TextEmbedding, InitOptions, EmbeddingModel};
 
 mod lab1;
 mod lab2;
+mod lab3;
 
 static USE_LOCAL_MODEL: bool = true;
-const LAB_NUM: u32 = 1;
+const LAB_NUM: u32 = 3;
+const RAG_FILE: &str = "../dane.md";
 
 #[tokio::main]
 async fn main() {
@@ -50,6 +52,11 @@ async fn main() {
             if let Err(err) = client.delete_collection("countries").await {
                 eprintln!("Error while deleting collection: {}", err);
             }
+        }
+
+        3 => {
+            let coll = lab3::setup(&client, Some(&mut model), RAG_FILE).await.unwrap();
+            lab3::chat_with_bot(Some(&mut model), coll).await;
         }
 
         _ => { eprintln!("Invalid lab number"); } 
