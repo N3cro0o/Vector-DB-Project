@@ -27,4 +27,4 @@ Dokładny opis jak wykonać drugie laboratorium znajduje się w [katalogu labs_e
 Celem ćwiczenia jest zapoznanie się z architekturą RAG (Retrieval Augmented Gereration) oraz wykorzystaniem wektorowych baz danych razem z gotowymi modelami językowymi.
 W ramach ćwiczenia student będzie musiał zbudować prosty system odpowiadający na pytania użytkownika na podstawie dostarczonych dokumentów. Dowie się w jaki sposób wykorzystać do tego przykładowy LLM i dlaczego należy wykonywać chunkowanie dokumentu.
 
-Dokładny opis jak wykonać trzecie laboratorium znajduje się w [katalogu labs_extended/](lab_extended/LAB2.md). 
+Dokładny opis jak wykonać trzecie laboratorium znajduje się w [katalogu labs_extended/](lab_extended/LAB3.md). 
