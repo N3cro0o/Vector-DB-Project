@@ -72,4 +72,6 @@ System ma wykorzystywać:
 * embeddingi (Fastembed),
 * bazę wektorową (ChromaDB),
 * model językowy (Ollama – Llama3),
-* prosty interfejs CLI
+* prosty interfejs CLI,
+
+W pliku pomoc możesz zobaczyć w jaki sposób wczytać plik z dokumentem, jak zbudować interfejs tekstowy i zobaczyć przykład uruchomienia całego programu. ask_hr_bot i build_index musisz zaimplementować gdyż są to funkcje odpowiedzialne odpowiednio za generowanie odpowiedzi przez model językowy oraz zbudowanie indeksu w bazie wektorowej. 
