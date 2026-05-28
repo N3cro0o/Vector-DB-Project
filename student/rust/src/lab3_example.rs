@@ -58,3 +58,30 @@ pub async fn setup(client: &HttpClient, model_borrow: Option<&mut TextEmbedding>
 
     Err(String::from("This is example function. Finish creating chroma collection."))
 }
+
+
+async fn gen_answer(input: String, model: &mut TextEmbedding, collection: &ChromaCollection, ollama: &ollama_rs::Ollama) -> Result<String, String> {
+    Err(String::from("Finish function gen_answer"))
+}
+
+pub async fn chat_with_bot(model_borrow: Option<&mut TextEmbedding>, collection: ChromaCollection) -> Result<(), String> {
+    let mut model = match model_borrow {
+        Some(m) => m,
+        None => { return Err("No model provided".to_string()); }
+    };
+    let ollama = ollama_rs::Ollama::default();
+    println!("Type 'exit' to quit chat.");
+    loop {
+        println!("Ask:");
+        let mut input = String::new();
+        let _ = std::io::stdin().read_line(&mut input);
+        input = input.trim().to_string();
+        if input.to_lowercase() == "exit" {
+            break;
+        }
+        let answer = gen_answer(input, model, &collection, &ollama).await.unwrap();
+        println!("Bot: {answer}");
+    }
+
+    Ok(())
+}
