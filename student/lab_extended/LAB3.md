@@ -82,3 +82,5 @@ System ma wykorzystywać:
 * bazę wektorową (ChromaDB),
 * model językowy (Ollama – Llama3),
 * prosty interfejs CLI
+
+W pliku pomoc możesz zobaczyć w jaki sposób wczytać plik z dokumentem, jak skonfigurować setup, jak zbudować interfejs tekstowy i zobaczyć przykład uruchomienia całego programu. Sam natomiast musisz odpowiednio podzielić dokument na mniejsze chunki, wygenerować embeddingi, stworzyć funkcję wyszukującą najbardziej podobne fragmenty tekstu i zintegrować program z Ollamą. 
